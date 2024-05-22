@@ -22,7 +22,7 @@ Although defaults work in most cases satisfactorily, it is worth to comment a fe
 
 The method `.describe()` extracts a conventional statistical summary. Columns of type `object` are omitted, except when all the columns have that type. Then the report contains just counts. 
 
-Basic statistics can also be calculated separately. For instance, ther method `.mean()` returns the column means. Correlations are also pretty easy:
+Basic statistics can also be calculated separately. For instance, the method `.mean()` returns the column means of a data frame. Correlations are also pretty easy:
 
 * For a pair of series, `s1` and `s2`, `s1.corr(s2)` returns the **correlation** of `s1` and `s2`.
 
