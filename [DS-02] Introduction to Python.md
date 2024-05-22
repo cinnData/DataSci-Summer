@@ -2,33 +2,71 @@
 
 ## What is Python?
 
-**Python** is a programming language, introduced in 1991. The latest stable version (when this is being written) is Python 3.11. To work with Python, you will pick an interface to a Python interpreter among the many available choices. You can have several instances of the interpreter, called **kernels**, running independently in your computer.
+**Python** is a programming language, born in 1991. The latest stable version (when this is being written) is Python 3.11. As a programming language, Python can be used by a programmer to write a program that performs a task. Since this course is data-oriented, let us mention a few examples in that line:
 
-Warning: Python is **case sensitive**. For instance, `type` is a Python function which returns the type of an object, but `Type` is not recognized (unless you create a new object with this name), and will return an error message.
+* A **web scraping** program that captures data on the current prices published in an e-commerce web site, storing them in a database.
+
+* A **machine learning** program that trains an algorithm that assigns credit scores to borrowers in a lending platform.
+
+* A **pricing algorithm** that estimates the market price of a real estate asset.
+
+These programs are later executed many times without being modified. But you can use Python in other ways. For instance, to examine the variation of the stock price of a specific company, or the structure of the vacation rental market in a specific region. Either for developing a program, which always involves a bit of trial and error, or in a data analysis, we use a basic tool, the **Python interactive interpreter**. We can have several instances of the interpreter, called **kernels**, running independently in our computer. To deal with the Python interpreter, Pythonistas use an app that provides an as interface to the Python interpreter, chosen among the many available choices (see below). 
+
+## Python modules and packages
+
+Many additional resources have been added to Python in the form of **modules**. A module is just a text file containing Python code. Modules are grouped in **libraries**. The **Python Standard Library**, distributed with Python, contains **built-in modules** providing standardized solutions for many problems that occur in everyday programming. For instance, the module `math` provides mathematical functions, while the module `datetime` provides functions for manipulating dates and times.
+
+Other libraries are typically called **packages**, because their elements are packed according to some specific rules which allow you to install and call them together. Python can be extended by more than 300,000 packages. Some big packages like scikit-learn (a machine learning toolkit) have **subpackages**.
+
+Since the basic Python toolkit (without any module) is quite limited, you will need to **import** additional resources for practically everything. Once a module has been imported, all its functions are available. Alternatively, you can import a single function from a module. Resources are imported just for the current kernel. You can only import from packages which are already **installed** in your computer. 
+
+Almost everything in the Python world is open-source. In particular, Python packages are contributed by various agents, such as university professors, freelance programmers, or industry behemoths like Google. This leads to a dynamic ecosystem, where you may find overlapping, dependencies and multiple versions. 
+
+## Python distributions
+
+A **Python distribution** is a software bundle, containing, at least, a Python interpreter and the corresponding version of the standard library. It also includes a collection of packages and one or more package managers for installing, uninstalling or updating packages. All distributions have a **package manager** called `pip`, and some distributions have a specific package manager.
+
+One option for working with Python is to start a Python kernel directly in a **shell** application associated to the operating system of your computer. Shell apps are typically called **Terminal** in Mac/Linux computers and **Prompt** in Windows computers. For this approach to work, the shell app has to find the Python files. This is automatic when the folder where the Python distribution is in the **path** of that shell. In the contrary, you have to know where to find it. 
+
+If you are just starting with Python, you will prefer a friendlier approach. Python distributions provide various interfaces to the Python interpreter. All include a **command line interface** (CLI), which may be a shell-like application or an **integrated development environment** (IDE). A Python IDE provides a Python-aware code editor integrated with the ability to run code from that editor. Details about one of the top popular Python distributions follow.
 
 ## The Anaconda distribution
 
-There are many distributions of Python. In the data science community, **Anaconda** (`anaconda.com`) is the favorite one. The current Anaconda distribution comes with Python 3.9. Downloading and installing Anaconda leaves you with the **Anaconda Navigator**, which opens in the browser and allows you to choose among different interfaces to the Python interpreter. 
+In the data science community, **Anaconda** (`anaconda.com`) is the favorite distribution. The current Anaconda distribution comes with Python 3.10. Anaconda provides all the packages used in this course, so no extra installation is needed. Anyway, Anaconda has a specific package manager, called `conda`. You may need `conda` for more advanced work, because it reviews the packages that are already installed in our computer, keeping track of the dependencies, and solving version conflicts between packages. On the downside, `conda` is much slower than `pip`.
 
-Among the many interfaces offered by Anaconda, I recommend you **Jupyter Qt Console**, which is a shell-like app with some extra features. Jupyter (Julia/Python/R) is a new name for an older project called **IPython** (Interactive Python). IPython's contribution was the IPython shell, which added some features to the mere Python language. Qt Console is the result of adding a graphical interface (GUI), with drop-down menus, mouse-clicking, etc, to the IPython shell, by means of a toolkit called Qt.
+After downloading and installing Anaconda, you can start your Python experience with the **Anaconda Navigator**, which opens in the browser and allows you to choose among different interfaces to the Python interpreter. First, you have **Jupyter Qt Console**, which is a shell-like app with some extra features. Jupyter (Julia/Python/R) is a new name for an older project called **IPython** (Interactive Python). IPython's contribution was the IPython shell, which added some features to the mere Python language. Qt Console is the result of adding a **graphical user interface** (GUI), with drop-down menus, mouse-clicking, etc, to the IPython shell, by means of a toolkit called Qt.
 
-Part of the popularity of the IPython shell was due to the **magic commands**, which were extra commands written as `%cmd`. For instance, `%cd` allowed you to change the **working directory**. These commands are not part of Python. Some textbooks and tutorials are still very keen on magic commands, which are occasionally mentioned in this course. To get more information about them, enter `%quickref` in the console. Although, in practice, you can omit the percentage sign (so `%cd` works exactly the same as `cd`), it is always safer to keep using it to distinguish the magic commands, which are NOT Python, from the Python code.
+Part of the popularity of the IPython shell was due to the **magic commands**, which were extra commands written as `%cmd`. For instance, `%cd` allows you to change the **working directory**. These commands *are not part of Python*. Though some textbooks and tutorials are still very keen on magic commands, these commands appear very briefly in this course. To get more information about them, enter `%quickref` in the console. Although, in practice, you can omit the percentage sign (so `%cd` works exactly the same as `cd`), it is always safer to keep using it to distinguish the magic commands from the Python code.
 
-Jupyter provides an alternative approach, based on the **notebook** concept. In a notebook, you can combine input, output and ordinary text. In the notebook arena, **Jupyter Notebook** is the leading choice. Notebooks are multilingual, that is, they can be used, not only with Python, but also with other languages like R. Most data scientists prefer the console for developing their code, but use notebooks for diffusion, specially for posting their work on platforms like GitHub.
+Jupyter provides an alternative approach, based on the **notebook** concept. A notebook is kind of document where you can combine input, output and ordinary text. A notebook is stored in a file with extension `ipynb` (IPython notebook). In the notebook arena, **Jupyter Notebook** is the leading choice. Notebooks are multilingual, that is, they can be used, not only with Python, but also with other languages like R. Most data scientists prefer the console for developing their code, but use notebooks for diffusion, specially for posting their work on platforms like **GitHub**.
 
-Besides the Jupyter tools, Anaconda also provides a Python IDE (Integrated Development Environment) called **Spyder**, where you can manage a console and an text editor for your code. If you have previous experience with this type of interface, for instance from working with R in RStudio, you may prefer Spyder to Qt Console.
+Besides the Jupyter apps, Anaconda also provides a Python IDE called **Spyder**, where you can manage together a console and a text editor for your code. If you have previous experience with IDE's, for instance from working with R in RStudio, you may prefer Spyder to Qt Console.
 
-Once Anaconda is installed, you can bypass the navigator by calling your preferred interface from a **shell application** (meaning Terminal in Mac computers and Anaconda Prompt in Windows computers). To start Qt Console, enter `jupyter qtconsole`. To get access to the notebooks in the default browser, enter `jupyter notebook`. To start Spyder, enter `spyder`.
+Once Anaconda is installed, you can bypass the navigator by calling your preferred interface from a shell. To start Qt Console, enter `jupyter qtconsole`. To get access to the notebooks in the default browser (*e.g*. Google Chrome), enter `jupyter notebook`. To start Spyder, enter `spyder`.
 
-*Note*. Use *Anaconda Prompt* in Windows, instead of the standard Windows prompt, which will not find the Anaconda apps unless you change the path.
+*Note*. Use *Anaconda Prompt* in Windows, instead of the standard Windows prompt, whose path does not contain the Anaconda apps.
+
+## The main packages
+
+This course does not look at Python as a programming language, but from a very specific perspective, assuming a data science context. From this perspective, the main Python packages are:
+
+* **NumPy** adds support for large vectors and matrices, called there **arrays**.
+
+* **Matplotlib**, based on NumPy, provides a plotting toolkit.
+
+* **Pandas** is a popular library for data management, used in the examples of this course. Pandas is built on top of NumPy and Matplotlib.
+
+## Colab notebooks
+
+**Google Colaboratory** is a Google app which allows you to write and executing Python code in a browser, with some advantages: (a) it does not require installation nor configuration, (b) it gives you access to GPU's (meaning more computing power) for free, and (c) it allows you an easy way to share content. In Google Colaboratory, you work with documents called **Colab notebooks**. Though they are not exactly the same, Colab notebooks are pretty similar to Jupyter notebooks, and they stored in Google Drive as files with extension `ipynb`. 
+
+You may be interested in using Colab, since you can access it from any deviced connected to Internet, such as an IPAD. The only thing you need to start working with Colab notebooks is a Google account, meaning a `gmail.com` address and its password. Colab work happens in **Google Drive** (enter through `https://www.google.com/drive`). In your debout, you have to install the Google Colaboratory app in your drive. To do this, click on the *Settings* button, select *Settings >> Manage apps* button and click on *Connect more apps*. `ipynb` files can be uploaded to and downloaded from Google Drive.
 
 ## Typing Python code
 
-Let me assume that you are using Jupyter Qt Console, though almost everything would also be valid in other interfaces, with minor adjustments. When you start the console, it opens a window where you can type or paste your code. You can resize the window and zoom inside it as in many other applications.
+Let us assume that you are working on Jupyter Qt Console. The console produces **input prompts** (such as `In[1]:`), where you can type a command and press *Return*. The console responds with either the corresponding **output** (preceded by `Out[1]:`), an **error message** or no answer at all. Error messages are typically long and unfriendly. 
 
-The console can have several tabs open, just as a browser. To open a new tab, enter either *Cmd+T* (Mac) or *Ctrl+T* (Windows), or use the menu *File >> New tab with New Kernel*. Every tab is an interface between you and a Python kernel. These kernels run independently. You can interrupt a running process with *Ctrl+C* or restart a kernel in the same tab with *Ctr+.*.
-
-The console produces input prompts (such as `In[1]:`), where you can type a command and press `Return`. Then Python returns either an output (preceded by `Out[1]:`), a (typically long and difficult) error message, or no answer at all. A simple example follows.
+A simple example follows. Note the white space in the input, around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of our code.
 
 ```
 In [1]: 2 + 2
@@ -48,7 +86,7 @@ In [3]: a
 Out[3]: 4
 ```
 
-In Pyhton, when you assign a value to a variable which has already been created, the previous assignment is forgotten. So:
+In Pyhton, when you assign a value to a variable which has already been created, the previous assignment is forgotten:
 
 ```
 In [4]: a = 7 - 2
@@ -57,7 +95,7 @@ In [5]: a
 Out[5]: 5
 ```
 
-If you copypaste in the console code chunks from a text editor (which is what you would do if you were working in the console, so you could readily save your code), you can input several code lines at once. In that case, you will only get the output for the last line. If the cursor is not at the end of the last line, you have to press *Shift+Return* to get the output. An example follows.
+Suppose that you copypaste in the console code chunks from a text editor. This is what you would do if you were working in the console, so you could readily save your code. You can so input several code lines at once. In that case, the console only shows the output for the last line of the input. An example follows.
 
 ```
 In [6]: b = 2 * 3
@@ -68,11 +106,14 @@ Out[6]: 36
 
 *Note*. You would probably have written `b^2` for the square of 2, but the caret symbol (`^`) plays a different role in Python.
 
+If you are typing the code in the console, you can open a new line within the same input with *Ctrl+Return*. You can then finish the input, calling for the output, by pressing *Return*. If the cursor is not at the end of the last line, you have to press *Shift+Return* to finish the input. 
+
+Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. There two type of cells, the Markdown cells and the code cells. In the **Markdown cells**, you write comments, while in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return*, you finish the the input, so you get the ouput, opening a new cell. To finish the input without opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
+
+
 ## Python packages
 
-Many additional resources have been added to Python in the form of **modules**. A module is just a text file containing Python code. Modules are grouped in libraries, also called **packages**, because their elements are packed according to some specific rules which allow you to install and call them together. Python can be extended by more than 300,000 packages. Some big packages are not single modules, but collections of modules, which are then called **subpackages**.
-
-Since the basic Python toolkit (without any package) is quite limited, you will need additional resources for practically everything. For instance, suppose that you want to do some math, and calculate the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available. You can then apply the function `math.sqrt`. This notation indicates that `sqrt` is a function of the module `math`.
+Additional Python resources come in **packages**. For instance, suppose that you want to do some math, calculating the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available, so you can call the function as `math.sqrt()`. This notation indicates that `sqrt()` is a function of the module `math`.
 
 In the console, the square root calculation shows up as:
 
@@ -90,7 +131,9 @@ In [8]: from math import sqrt
 Out[8]: 1.4142135623730951
 ```
 
-Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. With the Anaconda distribution, all the packages used in this course are already available and can be directly imported. 
+Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. With the Anaconda distribution, all the packages used in this course are already available and can be directly imported.
+
+*Note*. This course follows the common practice in Python learning materials of writing functions as *func()*. The parentheses remind you that this is an object that takes arguments.
 
 ## The main packages
 
@@ -108,7 +151,7 @@ In the data science context, the main Python packages are:
 
 ## Numeric types
 
-As in other languages, data can have different **data types** in Python. The data type can be learned with the function `type`. Let me start with the numeric types. For the variable `a` defined above:
+As in other languages, data can have different **data types** in Python. The data type can be learned with the function `type()`. Let me start with the numeric types. For the variable `a` defined above:
 
 ```
 In [9]: type(a)
@@ -135,7 +178,7 @@ In [12]: type(2.0)
 Out[12]: float
 ```
 
-In the above square root calculation, `b` got type `float` because this is what the `math` function `sqrt` returns. The functions `int` and `float` can be used to convert numbers from one type to another type (sometimes at a loss):
+In the above square root calculation, `b` got type `float` because this is what the `math` function `sqrt()` returns. The functions `int()` and `float()` can be used to convert numbers from one type to another type (sometimes at a loss):
 
 ```
 In [13]: float(2)
@@ -290,7 +333,7 @@ Out[33]: 'Joan'
 
 ## Other data container types
 
-The packages used in data science come with new data container types: NumPy arrays, Pandas series and Pandas data frames. Dealing with so many types of objects is a bit challenging for the beginner. The elements of the Python data containers (eg lists) can have different data types, but NumPy and Pandas data containers have consistency constraints. So, an array has a unique data type, while a data frame has a unique data type for every column.
+The packages used in data science come with new data container types: NumPy arrays, Pandas series and Pandas data frames. Dealing with so many types of objects is a bit challenging for the beginner. The elements of the Python data containers (*e.g*. lists) can have different data types, but NumPy and Pandas data containers have consistency constraints. So, an array has a unique data type, while a data frame has a unique data type for every column.
 
 ##  Functions
 
@@ -351,7 +394,7 @@ In [38]: def g(x, y): return x*y/(x**2 + y**2)
 Out[38]: 0.5
 ```
 
-Note that, in the definition of `g`, I have used a shorter way. Most programmers would make it longer, as I did previously for `f`.
+Note that, in the definition of `g()`, I have used a shorter way. Most programmers would make it longer, as I did previously for `f()`.
 
 ## Homework
 
