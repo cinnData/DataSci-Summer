@@ -12,7 +12,7 @@ The usual way to import NumPy is:
 In [1]: import numpy as np
 ```
 
-A 1D array can be created from a list with the NumPy function `array`. If the items of the list have different type, they are converted to a common type when creating the array. A simple example follows.
+A 1D array can be created from a list with the NumPy function `array()`. If the items of the list have different type, they are converted to a common type when creating the array. A simple example follows.
 
 ```
 In [2]: arr1 = np.array([2, 7, 14, 5, 9])
@@ -34,7 +34,7 @@ Although we visualize a vector as a column (or as a row) and a matrix as a recta
 
 In a similar way, a 2D array is a sequence of 1D arrays of the same length and type. It has two axes. When we visualize it as rows and columns, `axis=0` means *across rows*, while `axis=1` means *across columns*.
 
-The number of terms stored along an axis is the **dimension** of that axis. The dimensions are collected in the attribute `shape`.
+The number of terms stored along an axis is the **dimension** of that axis. The dimensions are collected in the attribute `.shape`.
 
 ```
 In [4]: arr1.shape
@@ -127,13 +127,13 @@ Out[14]: array([[ 3,  9, -5,  1]])
 In [15]: import pandas as pd
 ```
 
-Pandas provides two data container classes, the series (one-dimensional) and the data frames (two-dimensional). A **series** can be understood as the combination of a 1D array containing the **values** and a list containing the names of the values, called the **index**. These components can be extracted as the attributes `values` and `index`.
+Pandas provides two data container classes, the series (one-dimensional) and the data frames (two-dimensional). A **series** can be understood as the combination of a 1D array containing the **values** and a list containing the names of the values, called the **index**. These components can be extracted as the attributes `.values` and `.index`.
 
 A **data frame** can be seen as formed by one or several series with the same index (hence, with the same length). It can also be seen as a table for which the index provides the row names. In a Pandas data frame, each column has its own data type. The numeric types work as usual, but Pandas uses the data type `object` for many things, in particular for strings.
 
 ## Pandas series
 
-Although we rarely do it in data science, where the data are imported from external data files, a Pandas series can be created directly, for instance from an array, with the Pandas function `Series`:
+Although we rarely do it in data science, where the data are imported from external data files, a Pandas series can be created directly, for instance from an array, with the Pandas function `Series()`:
 
 ```
 In [16]: s1 = pd.Series(arr1)
@@ -184,7 +184,7 @@ Indexes are useful for combining, filtering and joining data sets. There are man
 
 ## Pandas data frames
 
-A Pandas **data frame** can be seen as a collection of series with the same index (hence, with the same length). Data frames can be built in many ways with the Pandas function `DataFrame`, for instance from a dictionary of vector-like objects of the same length, as in
+A Pandas **data frame** can be seen as a collection of series with the same index (hence, with the same length). Data frames can be built in many ways with the Pandas function `DataFrame()`, for instance from a dictionary of vector-like objects of the same length, as in
 
 ```
 In [21]: df = pd.DataFrame({'v1': range(5),
@@ -200,7 +200,7 @@ Out[21]:
 4   4  e -1.3
 ```
 
-As the series, the data frames have the attributes `values` and `index`:
+As the series, the data frames have the attributes `.values` and `.index`:
 
 ```
 In [22]: df.values
@@ -217,7 +217,7 @@ In [23]: df.index
 Out[23]: RangeIndex(start=0, stop=5, step=1)
 ```
 
-Without a explicit specification, the index is automatically created as a `RangeIndex`. In this example, since the columns have different data types, `df.values` takes `object` type. The third component of the data frame is a list with the column names, which can be extracted as the attribute `columns`:
+Without a explicit specification, the index is automatically created as a `RangeIndex`. In this example, since the columns have different data types, `df.values` takes type `object`. The third component of the data frame is a list with the column names, which can be extracted as the attribute `.columns`:
 
 ```
 In [24]: df.columns
@@ -240,7 +240,7 @@ Data frames can also be extracted from a data source (local or remote), such as 
 
 ## Exploring Pandas objects
 
-The methods `head` and `tail` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
+The methods `.head()` and `.tail()` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
 
 ```
 In [26]: df.head(2)
@@ -250,7 +250,7 @@ Out[26]:
 1   1  b -1.3
 ```
 
-The content of a data frame can also be explored with the method `info`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the second column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you can apply the string methods to this column, as will be seen later in this course.
+The content of a data frame can also be explored with the method `.info()`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the second column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you can apply the string methods to this column, as will be seen later in this course.
 
 ```
 In [27]: df.info()
@@ -266,7 +266,7 @@ dtypes: float64(1), int64(1), object(1)
 memory usage: 248.0+ bytes
 ```
 
-The method `describe` extracts a conventional statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. Then the report contains only counts. 
+The method `.describe()` extracts a conventional statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. Then the report contains only counts. 
 
 ```
 In [28]: df.describe()
