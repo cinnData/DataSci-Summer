@@ -169,7 +169,7 @@ dtype: object
 This can be used to filter out documents. For instance:
 
 ```
-In [19]: pres = pres[~(pres.isna())]
+In [19]: pres = pres.dropna()
     ...: pres[~pres.str.contains('a')]
 Out[19]: 
 1    Joe Biden
