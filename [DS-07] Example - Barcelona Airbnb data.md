@@ -61,7 +61,7 @@ In [1]: import pandas as pd
 The source files for this course can be extracted from a GitHub repository using the following **path**.
 
 ```
-In [2]: path = 'https://raw.githubusercontent.com/mikecinnamon/DataSci/main/Data/'
+In [2]: path = 'https://raw.githubusercontent.com/cinndata/DataSci-Summer/main/Data/'
 ```
 
 To import the data to a Pandas data frame we use the function `read_csv()`. In this example, we use the parameter `index_col` to specify the column `listing_id` as the index. 
