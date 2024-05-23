@@ -248,7 +248,7 @@ Out[15]: 1.0
 
 1. As we have seen in question Q3, some positions are incomplete. How often does this happen?
 
-2. What happens if in `In [15]` we use `'c++'` instead of `'c+'`? Why?
+2. What happens if, in question Q4 we use `'c++'` instead of `'c+'` as the first argument in `str.contains()? Why?
 
 3. In question Q4, we have just counted the postings mentioning C# and C++ in the basic qualifications field, irrespective of the number of times they were mentioned? Can you refine the analysis counting the postings that mention these languages one, two, three, etc times?
 
