@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In the US, assessed valuation determines the value of a residence for tax purposes. The **assessed value** is the price placed on a home by the corresponding government municipality, in order to calculate property taxes. A model predicting the current assessed value from available, objective data could be useful for **automatic assessment** and for spotting assessment errors. Although, in general, the assessed value tends to be lower than the appraised fair market value of property, the data on assessed values could also provide rough estimates for the mortgage industry.
+In the US, assessed valuation determines the value of a residence for tax purposes. The **assessed value** is the price placed on a home by the corresponding government municipality, in order to calculate property taxes. A model predicting the current assessed value from available, objective data could be useful for the **automatic assessment** of property, and for spotting assessment errors. Although, in general, the assessed value tends to be lower than the appraised fair market value of property, the data on assessed values could also provide rough estimates for the mortgage industry.
 
 The objective of this example is to explore the relationship between the assessed value and some home features, based on a data set obtained in the West Roxbury neighborhood, in southwest Boston (Massachussets). The data include information on 5,801 single family owner-occupied homes.
 
@@ -57,7 +57,7 @@ In [1]: import pandas as pd
 The source file is stored in a GitHub repository, so we can use a remote path to get access. The path is:
 
 ```
-In [2]: path = 'https://github.com/cinnData/DataSci-Summer/blob/main/Data/'
+In [2]: path = 'https://raw.githubusercontent.com/cinnData/DataSci-Summer/main/Data/'
 ```
 
 Pasting the path and the file name, we get a complete file name:
@@ -75,7 +75,7 @@ In [4]: df = pd.read_csv(filename)
 ## Exploring the data
 
 
-To explore the data set, we use the standard Pandas methods. First, the shape is the expected one, 13 columns and 5,801 row.
+To explore the data set, we use the standard Pandas methods. First, the shape is the expected one, 13 columns and 5,801 rows.
 
 ```
 In [5]: df.shape
@@ -138,7 +138,7 @@ Out[9]:
 5800         3          1          1        1          1        0  
 ```
 
-The method .info() prints a report of the data frame content. There are no missing values. The distinction between int and float columns is not relevant for a statistical description, so don't pay attention.
+The method .info() prints a report of the data frame content. According to this report, there are no missing values. All columns are numeric. The distinction between `int` and `float` columns is not relevant for a statistical description, so don't pay attention.
 
 ```
 In [10]: df.info()
@@ -163,7 +163,7 @@ Data columns (total 13 columns):
 dtypes: float64(2), int64(11)
 memory usage: 589.3 KB
 ```
-A common statistical summary can be extracted with the method `.describe()`.
+Finally, a common statistical summary can be extracted with the method `.describe()`.
 
 ```
 In [11]: df.describe()
@@ -201,6 +201,8 @@ max       2.000000     4.000000     1.000000
 
 ## Q1. Distribution of the home assessed value
 
+The **histogram** helps us to understand a **statistical distribution**. In Pandas, we can easily create a histogram with the method `.plot.hist()`. In this example, we use the argument edgecolor='white' to improve the picture, delineating the border of the histogram bars.
+
 ```
 In [12]: df['value'].plot.hist(figsize=(7,5), title='Figure 1. Distribution of the home assessed value',
     ...:     color='gray', edgecolor='white', xlabel='Home value (thousand USD)');
@@ -208,11 +210,25 @@ In [12]: df['value'].plot.hist(figsize=(7,5), title='Figure 1. Distribution of t
 
 ![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/05-1.png)
 
+We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distribution**, but that of a **skewed** distribution. This type of distribution, with a well-defined right tail, is typical of variables whose values are amounts of money.
+
 ## Q2. Association between value and size measures
 
+Though it is not, properly speaking, an evaluation, a **scatter plot** usually helps us to grasp the potential association of two variables. We can get a scatter plot in Pandas with the method `.plot.scatter()`. We have chosen here, the living area as the size measure, which will be justified below. 
+
 ```
-In [13]: df[['value', 'lot_sqft', 'gross_area', 'living_area']].corr()
-Out[13]: 
+In [13]: df.plot.scatter(x='living_area', y='value', figsize=(5,5), 
+    ...:     title='Figure 2. Home value vs living area', color='gray', s=2,
+    ...:     xlabel='Living area (sq ft)', ylabel='Home value (thousand USD)');
+```
+
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/05-2.png)
+
+The scatter plot somewhat confirms our guess of a positive association between the living area and the home value, though the interpretation of plots is always subjective. To be objective, statisticians use the **correlation** to evaluate the strength of the association. More specifically, the correlation tells us the extent to which one variable can be represented as a linear expression of the other variable. The correlation can be positive or negative. A strong correlation is one which is close to 1 (or -1), and a weak correlation one which is close to 0. In Pandas, correlations can be calculated with the method `.corr()`. When applied to a data frame, this method returns a **correlation matrix**.
+
+```
+In [14]: df[['value', 'lot_sqft', 'gross_area', 'living_area']].corr()
+Out[14]: 
                 value  lot_sqft  gross_area  living_area
 value        1.000000  0.546193    0.800398     0.837030
 lot_sqft     0.546193  1.000000    0.448949     0.426085
@@ -220,9 +236,11 @@ gross_area   0.800398  0.448949    1.000000     0.899715
 living_area  0.837030  0.426085    0.899715     1.000000
 ```
 
+For a cleaner picture, correlations are netter rounded to two or three decimals.
+
 ```
-In [14]: df[['value', 'lot_sqft', 'gross_area', 'living_area']].corr().round(2)
-Out[14]: 
+In [15]: df[['value', 'lot_sqft', 'gross_area', 'living_area']].corr().round(2)
+Out[15]: 
              value  lot_sqft  gross_area  living_area
 value         1.00      0.55        0.80         0.84
 lot_sqft      0.55      1.00        0.45         0.43
@@ -230,19 +248,27 @@ gross_area    0.80      0.45        1.00         0.90
 living_area   0.84      0.43        0.90         1.00
 ```
 
-```
-In [15]: df.plot.scatter(x='living_area', y='value', figsize=(5,5), 
-    ...:     title='Figure 2. Home value vs living area', color='gray', s=2,
-    ...:     xlabel='Living area (sq ft)', ylabel='Home value (thousand USD)');
-```
-
-![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/05-2.png)
+As expected, the three size measure are positively correlated with the home value, in  particular the correlation looks quite strong for the gorss and the living areas (which are also very strongly correlated).
 
 ## Q3. Trimming the data
+
+To check whether our suspictions are sound, we can **trim** the data, filtering out the homes whose value falls out of a certain range. The method `.between()` returns a Boolean series. An equivalent condition would be (df['value'] >= 1000) & (df['value'] <= 2000). Note that the `.between()` includes the two limits of the interval specified.  
 
 ```
 In [16]: df1 = df[df['living_area'].between(1000,2000)]
 ```
+
+Now the scatter plot looks less conclusive.
+
+```
+In [18]: df1.plot.scatter(x='living_area', y='value', figsize=(5,5), 
+    ...:     title='Figure 3. Home value vs living area (trimmed data)', color='gray', s=2,
+    ...:     xlabel='Living area (sq ft)', ylabel='Home value (thousand USD)');
+```
+
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/05-3.png)
+
+The correlations are also weaker. So, our guess about the influence of the extreme values on the correlations were correct.
 
 ```
 In [17]: df1[['value', 'lot_sqft', 'gross_area', 'living_area']].corr().round(2)
@@ -253,11 +279,3 @@ lot_sqft      0.40      1.00        0.21         0.17
 gross_area    0.46      0.21        1.00         0.62
 living_area   0.60      0.17        0.62         1.00
 ```
-
-```
-In [18]: df1.plot.scatter(x='living_area', y='value', figsize=(5,5), 
-    ...:     title='Figure 3. Home value vs living area (trimmed data)', color='gray', s=2,
-    ...:     xlabel='Living area (sq ft)', ylabel='Home value (thousand USD)');
-```
-
-![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/05-3.png)
