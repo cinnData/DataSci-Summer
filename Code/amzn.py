@@ -1,8 +1,8 @@
-## [UM-02E] Example - Amazon jobs ##
+## [DS-09] Example - Amazon Jobs data ##
 
 # Importing the data #
 import pandas as pd
-path = 'https://raw.githubusercontent.com/mikecinnamon/DataSci/main/Data/'
+path = 'https://raw.githubusercontent.com/cinndata/DataSci-Summer/main/Data/'
 filename = path + 'amzn.csv.zip'
 df = pd.read_csv(filename, index_col=0)
 
