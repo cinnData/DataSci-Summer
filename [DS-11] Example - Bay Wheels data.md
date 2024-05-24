@@ -232,7 +232,7 @@ We see here a combination of a trend with time-based patterns, but it is difficu
 In [15]: df['total'].resample('D').mean().plot(figsize=(8,5), title='Figure 2. Daily total demand', color='black', linewidth=1);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-2.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-2.png)
 
 Now, the picture is more clear, though part of the variation is probably due to weekends and holidays. Going a bit further, we can aggregate to a weekly data set, again with `.resample()`.
 
@@ -240,7 +240,7 @@ Now, the picture is more clear, though part of the variation is probably due to 
 In [16]: df['total'].resample('W').mean().plot(figsize=(8,5), title='Figure 3. Weekly total demand', color='black', linewidth=1);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-3.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-3.png)
 
 Even further, we can aggregate to a monthly data set. The chart shows a combination of a trend plus monthly seasonality.
 
@@ -257,13 +257,13 @@ In [18]: df['casual'].resample('M').mean().plot(figsize=(8,5), title="Figure 5. 
 
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-5.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-5.png)
 
 ```
 In [19]: df['member'].resample('M').mean().plot(figsize=(8,5), title="Figure 6. Members' monthly total demand", color='black', linewidth=1);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-6.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-6.png)
 
 ## Q4. Intraday variation
 
@@ -321,14 +321,14 @@ In [22: df[['casual', 'hour']].groupby('hour').mean().plot.bar(figsize=(7,5),
     ...:    title="Figure 7. Intraday variation of casuals' average demand", color='gray', legend=False);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-7.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-7.png)
 
 ```
 In [23]: df[['member', 'hour']].groupby('hour').mean().plot.bar(figsize=(7,5),
     ...:    title="Figure 8. Intraday variation of members' average demand", color='gray', legend=False);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-8.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-8.png)
 
 You may prefer to pack both charts as a **stacked bar chart**, which is east in Pandas, as we seen next.
 
@@ -338,7 +338,7 @@ In [24]: df[['casual', 'member', 'hour']].groupby('hour').mean().plot.bar(figsiz
 
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-9.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-9.png)
 
 ## Q5. Intraweek variation
 
@@ -355,7 +355,7 @@ In [26]: df[['casual', 'member', 'weekday']].groupby('weekday').mean().plot.bar(
     ...:    title= 'Figure 10. Intraweek variation of total demand', color=['0.4', '0.7'], stacked=True);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-10.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-10.png)
 
 ## Q6. Monthly seasonality #
 
@@ -388,7 +388,7 @@ In [28]: df[['total', 'month']].groupby('month').mean().plot(figsize=(8,5),
     title='Figure 11. Monthly seasonality', color='black', linewidth=1, legend=False);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-11.png)
+![](https://github.com/cinndata/DataSci-Summer/blob/main/Figures/11-11.png)
 
 ## Homework
 
