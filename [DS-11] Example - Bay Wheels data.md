@@ -60,7 +60,7 @@ In [1]: import pandas as pd
 The table `rides` has been split in three data sets stores in zipped CSV files in GitHub, with a common path. So we create a variable containing that path.
 
 ```
-In [2]: path = 'https://raw.githubusercontent.com/mikecinnamon/DataSci/main/Data/'
+In [2]: path = 'https://raw.githubusercontent.com/cinndata/DataSci-Summer/main/Data/'
 ```
 
 Next, we import to data frames the five files.
@@ -224,7 +224,7 @@ Time trends are typically spotted by means of **line charts**. See below a sampl
 In [14]: df['total'].plot(figsize=(8,5), title='Figure 1. Hourly total demand', color='black', linewidth=1);
 ```
 
-![](https://github.com/mikecinnamon/DataSci/blob/main/Figures/03e-1.png)
+![](https://github.com/cinndata/DataSci/blob/main/Figures/11-1.png)
 
 We see here a combination of a trend with time-based patterns, but it is difficult to conclude much with so many observations and the current granularity of the data. Since intraday patterns can be responsible for a significant part of the variation that we see in the chart, we aggregate to a daily data set. We use the mean so the vertical scale in the successive charts remains the same. Note that here, we don't use `.groupby()`, but `.resample()`, and we don't need to create a new data set for plotting.
 
