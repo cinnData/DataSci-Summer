@@ -48,7 +48,7 @@ df.head(2)
 df.info()
 df.describe()
 
-# Subsetting in Pandas #
+# Subsetting data frames #
 df['v2']
 df[['v1', 'v2']]
 df[df['v1'] > 2]
