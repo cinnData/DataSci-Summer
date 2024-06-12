@@ -256,4 +256,4 @@ Out[15]: 1.0
 
 5. How often is experience mentioned in the preferred qualifications field? 
 
-6. Expressions like '3+ years' or similar, with or without the word experience. For instance, you can find '4+ years of professional sotware development ...'. When the basic qualifications specifiy a number of years of experience, which is the top frequent number?
+6. We see in the preferred qualifications field expressions like '3+ years' or similar, with or without the word experience. For instance, you can find '4+ years of professional sotware development ...'. When the preferred qualifications specifiy a number of years of experience, which is the top frequent number?
